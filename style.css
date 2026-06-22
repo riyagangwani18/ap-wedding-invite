@@ -1,0 +1,229 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    background-color: #f7f5f0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* --- ENVELOPE OVERLAY LAYER --- */
+.envelope-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999;
+    background-color: #121212;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.6s ease-in-out;
+}
+
+.envelope-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#envelope-body, #envelope-flap {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    top: 0;
+    left: 0;
+}
+
+#envelope-body { z-index: 1; }
+#envelope-flap { 
+    z-index: 2; 
+    transform-origin: top center;
+    transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* New layout container anchoring seal directly over the central horizon point */
+.seal-trigger-zone {
+    position: absolute;
+    inset: 0;
+    /*top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center; */
+    z-index: 3;
+    /* pointer-events: none;  Prevents container box from eating clicks */
+}
+
+#wax-seal {
+    position: absolute;
+    width: 140px; /* Scaled up to align exactly with your reference layout */
+    height: 140px;
+    left: 50%;
+    top:47%;
+    cursor: pointer;
+    /*pointer-events: auto;  Forces click targeting back on the seal graphic */
+    transform: translate(-50%, -50%); /* Fine tuning nudge down directly onto the triangle tip line */
+    z-index: 5;
+   /* transition: opacity 0.4s ease, transform 0.4s ease; */
+}
+
+.tap-text {
+    position: absolute;
+    top: 12%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 4;
+    color: #ffffff;
+    font-size: 13px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 1; }
+}
+
+/* --- SCROLLING CANVAS BACKGROUND --- */
+#main-content {
+    width: 100%;
+    min-height: 100vh;
+    background: url('images/main-bg.jpg') no-repeat center center fixed;
+    background-size: cover;
+    transition: opacity 0.5s ease;
+}
+
+.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.invite-section {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 24px;
+    text-align: center;
+}
+
+.couple-names {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 46px;
+    color: #4a3b32;
+    line-height: 1.2;
+    margin: 24px 0;
+}
+
+.sub-heading, .section-title {
+    font-size: 14px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #8c7662;
+}
+
+.section-title { font-size: 18px; margin-bottom: 10px;}
+
+.invite-text {
+    font-size: 15px;
+    color: #5c544e;
+    line-height: 1.7;
+    max-width: 290px;
+}
+
+/* --- GAMIFIED SCRATCH CONTAINER --- */
+.scratch-instruction {
+    font-size: 12px;
+    color: #8c7662;
+    margin-bottom: 20px;
+    font-style: italic;
+}
+
+.scratch-container {
+    position: relative;
+    width: 280px;
+    height: 150px;
+    margin: 20px 0;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    background: rgba(255, 255, 255, 0.8);
+    overflow: hidden;
+}
+
+.hidden-date {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 600;
+    color: #b32d44;
+    letter-spacing: 1px;
+    z-index: 1;
+}
+
+#scratch-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    cursor: pointer;
+    touch-action: none;
+}
+
+/* --- TIMER structures --- */
+#countdown-container {
+    display: flex;
+    gap: 15px;
+    margin-top: 40px;
+}
+
+.timer-box {
+    background: rgba(255, 255, 255, 0.6);
+    padding: 12px 15px;
+    border-radius: 8px;
+    min-width: 65px;
+}
+
+.timer-box span {
+    font-size: 20px;
+    font-weight: 500;
+    color: #4a3b32;
+}
+
+.timer-box p {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #8c7662;
+    margin-top: 4px;
+}
+
+.image-frame {
+    width: 85%;
+    max-width: 320px;
+    margin: 20px 0;
+}
+
+#couple-img { width: 100%; height: auto; }
+.quote { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 18px; color: #6e5d51; }
+.scroll-down-indicator { margin-top: 40px; font-size: 12px; color: #8c7662; }
