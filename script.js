@@ -5,24 +5,32 @@ document.addEventListener("DOMContentLoaded", () => {
     const mainContent = document.getElementById("main-content");
     const tapText = document.querySelector(".tap-text");
 
-    // Click trigger on the transparent hotspot area
+    // Click handler for opening the interactive invitation
     sealTrigger.addEventListener("click", () => {
+        const visualSeal = document.getElementById("visual-wax-seal");
+        
         sealTrigger.style.pointerEvents = "none";
         tapText.style.opacity = "0";
         
-        // Move the envelope flap up smoothly
+        // Scale and fade out the wax seal button element
+        if (visualSeal) {
+            visualSeal.style.transform = "translate(-50%, -40%) scale(0.8)";
+            visualSeal.style.opacity = "0";
+        }
+        
+        // Animate open the mechanical flap layout 
         setTimeout(() => {
             envelopeFlap.style.transform = "scaleY(-1) translateY(-100%)";
             envelopeFlap.style.opacity = "0"; 
         }, 100);
 
-        // Show main website scroll layout
+        // Transition visible main site frame layers
         setTimeout(() => {
             mainContent.classList.remove("hidden");
             initScratchCard(); 
         }, 500);
 
-        // Clear out the black background overlay entirely
+        // Wipe away the dim cover screen mask layer completely
         setTimeout(() => {
             envelopeOverlay.style.opacity = "0";
             setTimeout(() => { 
@@ -31,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 1200);
     });
 
-    // COUNTDOWN CALCULATOR (Target: Nov 20, 2026)
+    // TIMING SYSTEM CORE (Targeting November 20, 2026)
     const targetDate = new Date("November 20, 2026 00:00:00").getTime();
 
     const updateTimer = () => {
@@ -55,13 +63,12 @@ document.addEventListener("DOMContentLoaded", () => {
     };
     setInterval(updateTimer, 1000);
 
-    // GOLD SCRATCH INTERACTION ENGINE
+    // GOLD COATING CANVAS RENDER PROCESSOR
     function initScratchCard() {
         const canvas = document.getElementById("scratch-canvas");
         const ctx = canvas.getContext("2d");
         let isDrawing = false;
 
-        // Matte gold cover
         ctx.fillStyle = "#dfba73";
         ctx.fillRect(0, 0, canvas.width, canvas.height);
 
