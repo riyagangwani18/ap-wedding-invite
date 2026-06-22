@@ -10,13 +10,12 @@
 <body>
 
     <div id="envelope-overlay" class="envelope-container">
-        <div class="tap-text">Tap to Reveal</div>
+        <div class="tap-text">Tap Seal to Open</div>
         <div class="envelope-wrapper">
             <img src="images/envelope-body.png" id="envelope-body" alt="Envelope Body">
             <img src="images/envelope-flap.png" id="envelope-flap" alt="Envelope Flap">
-            <div class="seal-trigger-zone">
-                <img src="images/wax-seal.png" id="wax-seal" alt="Wax Seal">
-            </div>
+            
+            <button id="seal-trigger" class="invisible-seal-button" aria-label="Open Invite"></button>
         </div>
     </div>
 
@@ -31,7 +30,7 @@
 
         <section class="invite-section">
             <h2 class="section-title">Reveal Our Big Day</h2>
-            <p class="scratch-instruction">Scratch the box to reveal the date</p>
+            <p class="scratch-instruction">Scratch the card to reveal the date</p>
             
             <div class="scratch-container">
                 <div class="hidden-date">20 Nov 2026</div>
@@ -44,9 +43,6 @@
                 <div class="timer-box"><span id="minutes">00</span><p>Mins</p></div>
                 <div class="timer-box"><span id="seconds">00</span><p>Secs</p></div>
             </div>
-
-            <p class="scratch-instruction">You are cordially invited.</p>
-
         </section>
 
         <section class="invite-section">
@@ -54,7 +50,7 @@
             <div class="image-frame">
                 <img src="images/couple.png" id="couple-img" alt="Anaya and Priyansh">
             </div>
-            <p class="quote">"Formal Invite To Follow"</p>
+            <p class="quote">"A moment captured in time, forever in our hearts."</p>
         </section>
 
     </main>

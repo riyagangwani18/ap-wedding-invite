@@ -1,31 +1,37 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const waxSeal = document.getElementById("wax-seal");
+    const sealTrigger = document.getElementById("seal-trigger");
     const envelopeFlap = document.getElementById("envelope-flap");
     const envelopeOverlay = document.getElementById("envelope-overlay");
     const mainContent = document.getElementById("main-content");
+    const tapText = document.querySelector(".tap-text");
 
-    waxSeal.addEventListener("click", () => {
-        // Pop scaling transition on click
-        waxSeal.style.transform = "translate(-50%, -50%) scale(0.8)";
-        waxSeal.style.opacity = "0";
-        waxSeal.style.pointerEvents = "none";
+    // Click trigger on the transparent hotspot area
+    sealTrigger.addEventListener("click", () => {
+        sealTrigger.style.pointerEvents = "none";
+        tapText.style.opacity = "0";
         
+        // Move the envelope flap up smoothly
         setTimeout(() => {
             envelopeFlap.style.transform = "scaleY(-1) translateY(-100%)";
-        }, 300);
+            envelopeFlap.style.opacity = "0"; 
+        }, 100);
 
+        // Show main website scroll layout
         setTimeout(() => {
             mainContent.classList.remove("hidden");
-            initScratchCard();
-        }, 600);
+            initScratchCard(); 
+        }, 500);
 
+        // Clear out the black background overlay entirely
         setTimeout(() => {
             envelopeOverlay.style.opacity = "0";
-            setTimeout(() => { envelopeOverlay.style.display = "none"; }, 600);
-        }, 1400);
+            setTimeout(() => { 
+                envelopeOverlay.style.display = "none"; 
+            }, 600);
+        }, 1200);
     });
 
-    // TIMING TARGETING NOVEMBER 20, 2026
+    // COUNTDOWN CALCULATOR (Target: Nov 20, 2026)
     const targetDate = new Date("November 20, 2026 00:00:00").getTime();
 
     const updateTimer = () => {
@@ -49,17 +55,18 @@ document.addEventListener("DOMContentLoaded", () => {
     };
     setInterval(updateTimer, 1000);
 
-    // MATTE GOLD COATING LAYER
+    // GOLD SCRATCH INTERACTION ENGINE
     function initScratchCard() {
         const canvas = document.getElementById("scratch-canvas");
         const ctx = canvas.getContext("2d");
         let isDrawing = false;
 
+        // Matte gold cover
         ctx.fillStyle = "#dfba73";
         ctx.fillRect(0, 0, canvas.width, canvas.height);
 
         ctx.fillStyle = "#ffffff";
-        ctx.font = "13px Montserrat";
+        ctx.font = "600 13px Montserrat";
         ctx.textAlign = "center";
         ctx.fillText("SCRATCH HERE", canvas.width / 2, canvas.height / 2 + 5);
 
