@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
         
         // Scale and fade out the wax seal button element
         if (visualSeal) {
-            visualSeal.style.transform = "translate(-50%, -40%) scale(0.8)";
+            visualSeal.style.transform = "translate(-50%, -43%) scale(0.8)";
             visualSeal.style.opacity = "0";
         }
         
